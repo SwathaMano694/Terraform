@@ -141,10 +141,9 @@ resource "aws_lb_target_group_attachment" "loadbalancer" {
 terraform {
   backend "s3" {
     bucket         = "terraform-s3-state-20240"
-    key            = "terraform.tfstate"
+    key            = "terraform-${timestamp()}.tfstate"  
     region         = "us-east-1"
     dynamodb_table = "LockPrevention_table"
     encrypt        = true
   }
 }
-
